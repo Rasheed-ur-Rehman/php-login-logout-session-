@@ -29,7 +29,7 @@ include'config.php';
 
         </table>
                  <button class="btn btn-primary" name="signup">SignUp</button>
-                 <button class="btn btn-primary">Login</button>
+                 <button class="btn btn-primary"name='login'>Login</button>
 
  	</form>
  
@@ -54,5 +54,7 @@ if ($result) {
 
 
 }
-
+if (isset($_POST['login'])) {
+	header('location:login.php');
+}
   ?>
