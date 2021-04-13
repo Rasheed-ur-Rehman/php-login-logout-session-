@@ -1,45 +1,64 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<h1>Your successfully Login
+</h1>
+
+<?php 
+ob_start();
+session_start();
+
+$username=$_SESSION['name'];
+include'config.php';
 
 
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Forget Password</title>
- 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
- </head>
- <body>
- <form method="POST">
- 	<table class="table">
- 		<tr>
- 			<td>Enter Registered Email ID :
- 		<input type="text" name="email">
- 		New Password : <input type="password" name="password">
- 		
- 			<button class="btn btn-primary" name="ok">OK</button></td>
- 		</tr>
- 	</table>
-
- </form>
-
- <?php 
- if (isset($_POST['ok'])) {
- 	include'config.php';
- 	$password=$_POST['password'];
- 	$email=$_POST['email'];
-
-$sql="UPDATE `signup` SET `password`='$password' WHERE Email='$email'";
-if (mysqli_query($con,$sql)) {
-
-	echo " Password Sucessfully Updated your Email : ".$email;
-	?> <button class="btn btn-primary"><a href="login.php"> HOME</a></button><?php 
+if ($username==true) {
+	
 }else{
-	echo "Email not Registered with us ".$email;
-	 ?> <button class="btn btn-primary"> <a href="signup.php"> SigN up</a></button> <?php
+	header('location:login.php');
+}
+
+
+$img = mysqli_query($con, "SELECT * FROM signup WHERE Email='".$username."'");
+if ($row=mysqli_fetch_array($img)) {
+	
+	$name=$row['Name'];
+	$email=$row['Email'];
+
+	echo "Name ".$name;
+	echo "<br>";
+	echo "Email Id ".$email;
 
 }
 
- }
+ ?>	
+<form method="POST">
+<button class="btn btn-danger" name="logout">Log Out</button>
+</form>
 
-  ?>
+<?php 
 
- </body>
- </html>
+if (isset($_POST['logout'])) {
+
+	include'out.php';
+
+}
+
+ob_end_flush();
+ ?>
+
+<script type="text/javascript">
+
+
+	//ajax tutorial programme 
+	
+document.getElementByid('text');
+
+</script>
+
+
