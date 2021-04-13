@@ -33,7 +33,7 @@ if (mysqli_query($con,$sql)) {
 	?> <button class="btn btn-primary"><a href="login.php"> HOME</a></button><?php 
 }else{
 	echo "Email not Registered with us ".$email;
-	 ?> <button class="btn btn-primary"> <a href="signup.php"> Signup</a></button> <?php
+	 ?> <button class="btn btn-primary"> <a href="signup.php"> SigN up</a></button> <?php
 
 }
 
